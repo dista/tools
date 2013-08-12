@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/root/media-server-3/branches/dev/src/tvie-core/TVieMediaServer/lib/libstream-cv'
+let g:netrw_dirhist_2='/root/tests_for_release/dev/src/api/mediaserver'
+let g:netrw_dirhist_3='/root/rtmpdump/librtmp'
+let g:netrw_dirhist_4='/root/tests_for_release/dev/product/media-server/build/tvie-core/3rdparty/rtmpdump'
+let g:netrw_dirhist_5='/root/tests_for_release/dev/product/media-server/build/output/usr/local/tvie/lib64'
+let g:netrw_dirhist_6='/usr/local/tvie/config'
+let g:netrw_dirhist_7='/root/boost_1_48_0/boost/asio'
+let g:netrw_dirhist_8='/root/media-server-3/branches/build/dev/output/usr/local/tvie/config/TVieMediaServer/script'
