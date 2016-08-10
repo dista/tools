@@ -1,3 +1,8 @@
+#############################################################################
+  INCASE oh-my-zsh can not be used, such as github is blocked.
+#############################################################################
+
+
 # add my bin root to path
 export PATH=/root/my_app/bin:$PATH
 
