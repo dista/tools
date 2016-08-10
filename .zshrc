@@ -1,5 +1,5 @@
 #############################################################################
-  INCASE oh-my-zsh can not be used, such as github is blocked.
+#  INCASE oh-my-zsh can not be used, such as github is blocked.             #
 #############################################################################
 
 
