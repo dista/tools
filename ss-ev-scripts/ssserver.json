@@ -1,0 +1,9 @@
+{
+    "server":"",
+    "server_port": 232,
+    "local_port":12345,
+    "password":"",
+    "timeout":600,
+    "method":"",
+    "auth": false
+}
