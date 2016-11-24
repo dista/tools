@@ -1,59 +1,50 @@
-execute pathogen#infect()
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" set nocompatible
-filetype plugin indent on
-syntax on
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" always show status bar
-:set laststatus=2
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-" If the current buffer has never been saved, it will have no name,
-" call the file browser to save it, otherwise just save it.
-command -nargs=0 -bar Update if &modified 
-                           \|    if empty(bufname('%'))
-                           \|        browse confirm write
-                           \|    else
-                           \|        confirm write
-                           \|    endif
-                           \|endif
-noremap <C-S> :update<CR>
-vnoremap <C-S> <C-C>:update<CR>
-inoremap <C-S> <C-O>:update<CR>
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'rakr/vim-one'
 
-" tabs to space
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+"
+
+set t_Co=256
+set nu!
+set background=light " for the dark version
+" set background=light " for the light version
+colorscheme one
+let g:airline_theme='one'
+let g:airline#extensions#tabline#enabled = 1
+
+set laststatus=2
 set expandtab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 autocmd FileType make setlocal noexpandtab
 
-" indent
-set smartindent
-
-let NERDTreeIgnore = ['\.lo$', '\.la$', '\.pyc$', '\.o$', '\.d$']
-
-" nerd tree sets
-map <F5> :NERDTreeToggle<CR>
-
-" tag list plugin
-map <F4> :TlistToggle<CR>
-
-highlight Comment ctermfg=blue
-set nu!
-
-au BufNewFile,BufRead *.ipp set filetype=cpp
-
-" set this, also change ~/.profile to enable 256 color
-set t_Co=256
-
-colorscheme wombat256
-"colorscheme summerfruit256
-"colorscheme beauty256
-"colorscheme google
-" :colorscheme xoria256
-" :colorscheme LAZY
-" :colorscheme jellybeans
-
-" only do this part when compiled with support for autocommands
 if has("autocmd")
     " When editing a file, always jump to the last cursor position
     autocmd BufReadPost *
@@ -61,8 +52,3 @@ if has("autocmd")
     \   exe "normal g'\"" |
     \ endif
 endi
-
-" protobuf
-augroup filetype
-    au! BufRead,BufNewFile *.proto setfiletype proto
-augroup end
