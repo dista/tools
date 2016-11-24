@@ -39,6 +39,8 @@ colorscheme one
 let g:airline_theme='one'
 let g:airline#extensions#tabline#enabled = 1
 
+set cursorline
+hi CursorLine   cterm=NONE ctermbg=LightYellow
 set laststatus=2
 set expandtab
 set tabstop=2
