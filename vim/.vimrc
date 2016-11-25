@@ -31,6 +31,7 @@ filetype plugin indent on    " required
 "
 "
 
+syntax on
 set t_Co=256
 set nu!
 set background=light " for the dark version
