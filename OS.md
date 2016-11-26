@@ -17,6 +17,7 @@ Linux mint 18 mate的易用性还是不错的， 驱动，输入法都可以通�
 * 字体，系统已经chrome的字体都选择`Noto Sans CJK SC`, 这是中文字体，可以使得中文网站的显示变得非常不错。
 * Nvidia显卡和默认的window manager不兼容，会出现`tearing`, 可以吧window manager改为`Marco + Compton`. 修改地点在`Desktop Setting
 -> Windows -> Window Manager`
+* openvpn可以用`Import a saved VPN configuration`直接导入.opvn的文件,避免手动配置
 
 ## Windows下面删除Linux
 * 下载dbr工具，用它的图形界面一键修复，注意修复后会导致关机失效，直接断电重启就正常了
