@@ -2,6 +2,10 @@
 
 require 'yaml'
 
+Signal.trap("INT") { 
+  exit
+}
+
 def print_usage
   print <<-eos
 Usage:
