@@ -1,0 +1,84 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+
+def print_usage
+  print <<-eos
+Usage:
+sshgo COMMAND
+COMMANDS:
+  list
+  go DESTINY
+  help
+eos
+abort
+end
+
+def load_config
+  default_config_file = "#{Dir.home}/.sshgo.yaml"
+
+  config = YAML.load(File.read(default_config_file))
+end
+
+def list_config
+  config = load_config
+  config.each do |lv1, lv1obj|
+    space = '  '
+    print "#{space}-#{lv1}\n"
+    lv1obj.each do |lv2, lv2obj|
+      space2 = space * 2
+      print "#{space2}-#{lv2}\n"
+    end
+  end
+end
+
+def check_sshpass()
+  system "which sshpass >/dev/null 2>&1"
+end
+
+def go_ssh(remote)
+  config = load_config
+
+  ssh_config = nil
+  config.each do |_, lv1obj|
+    lv1obj.each do |lv2, obj|
+      if lv2 == remote
+        ssh_config = obj
+      end
+    end
+  end
+
+  if ssh_config == nil
+    print "'#{remote}' can not be found\n"
+    return
+  end
+
+  system "sshpass -p #{ssh_config['password']} ssh #{ssh_config['user']}@#{ssh_config['host']}"
+end
+
+if ARGV.length < 1
+  print_usage
+end
+
+cmd = ARGV[0]
+if not ['list', 'go', 'help'].include? cmd
+  print_usage
+end
+
+case cmd
+when 'list'
+  list_config
+when 'go'
+  if not check_sshpass
+    print 'sshpass need to be installed\n'
+    abort
+  end
+
+  if ARGV[1] == nil
+    print_usage
+  end
+ 
+  go_ssh(ARGV[1])
+when 'help'
+  print_usage
+end
