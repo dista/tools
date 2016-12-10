@@ -11,9 +11,9 @@ def print_usage
 Usage:
 sshgo COMMAND
 COMMANDS:
-  list
-  go DESTINY
-  help
+  list        -- list all destiny, shortcut 'l'
+  go DESTINY  -- go to the destiny, shortcut 'g'
+  help        -- print this
 eos
 abort
 end
@@ -65,8 +65,15 @@ if ARGV.length < 1
 end
 
 cmd = ARGV[0]
-if not ['list', 'go', 'help'].include? cmd
+  if not ['list', 'l', 'go', 'g', 'help'].include? cmd
   print_usage
+end
+
+case cmd
+when 'l'
+  cmd = 'list'
+when 'g'
+  cmd = 'go'
 end
 
 case cmd
