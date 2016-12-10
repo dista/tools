@@ -36,10 +36,6 @@ def list_config
   end
 end
 
-def check_sshpass()
-  system "which sshpass >/dev/null 2>&1"
-end
-
 def go_ssh(remote)
   config = load_config
 
@@ -57,7 +53,7 @@ def go_ssh(remote)
     return
   end
 
-  system "sshpass -p #{ssh_config['password']} ssh #{ssh_config['user']}@#{ssh_config['host']}"
+  system "#{ssh_config['cmd']}"
 end
 
 if ARGV.length < 1
@@ -80,11 +76,6 @@ case cmd
 when 'list'
   list_config
 when 'go'
-  if not check_sshpass
-    print 'sshpass need to be installed\n'
-    abort
-  end
-
   if ARGV[1] == nil
     print_usage
   end
