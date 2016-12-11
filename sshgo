@@ -71,11 +71,7 @@ def find_cmd(lv1obj, remote)
   ret
 end
 
-def get_ssh_config(remote)
-  config = load_config
-
-  terminal = config['terminal']
-
+def get_ssh_config(config, remote)
   ssh_config = nil
   config.each do |lv1, lv1obj|
     if lv1 == 'hosts'
@@ -87,7 +83,10 @@ def get_ssh_config(remote)
 end
 
 def go_ssh(remote)
-  ssh_config = get_ssh_config remote
+  config = load_config
+  terminal = config['terminal']
+
+  ssh_config = get_ssh_config(config, remote)
   if !ssh_config
     return
   end
@@ -96,7 +95,8 @@ def go_ssh(remote)
 end
 
 def show_ssh(remote)
-  ssh_config = get_ssh_config remote
+  config = load_config
+  ssh_config = get_ssh_config(config, remote)
   if !ssh_config
     return
   end
