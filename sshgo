@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
-require 'yaml'
+# encoding: UTF-8
+
+require 'json'
 
 Signal.trap("INT") { 
   exit
@@ -19,41 +21,72 @@ abort
 end
 
 def load_config
-  default_config_file = "#{Dir.home}/.sshgo.yaml"
+  default_config_file = "#{Dir.home}/shuttle.json"
 
-  config = YAML.load(File.read(default_config_file))
+  config = JSON.parse(File.read(default_config_file))
+end
+
+def print_cmd(lv1obj, state)
+  space = '  ' * state
+  lv1obj.each do |cmd|
+    if cmd.key? 'cmd'
+      print "#{space}\u2022 #{cmd['name']}\n"
+    else
+      cmd.each do |lv, obj|
+        print "#{space}\u2630 #{lv}\n"
+        print_cmd(obj, state + 1)
+      end
+    end
+  end
 end
 
 def list_config
   config = load_config
   config.each do |lv1, lv1obj|
-    space = '  '
-    print "#{space}-#{lv1}\n"
-    lv1obj.each do |lv2, lv2obj|
-      space2 = space * 2
-      print "#{space2}-#{lv2}\n"
+    if lv1 == 'hosts'
+      print_cmd(lv1obj, 1)
     end
   end
+end
+
+def find_cmd(lv1obj, remote)
+  ret = nil
+
+  lv1obj.each do |cmd|
+    if cmd.key? 'cmd'
+      if cmd['name'].start_with? remote
+        ret = cmd
+      end
+    else
+      cmd.each do |lv, obj|
+        ret = find_cmd(obj, remote)
+        break if ret
+      end
+    end
+
+    break if ret
+  end
+
+  ret
 end
 
 def go_ssh(remote)
   config = load_config
 
+  terminal = config['terminal']
+
   ssh_config = nil
-  config.each do |_, lv1obj|
-    lv1obj.each do |lv2, obj|
-      if lv2 == remote
-        ssh_config = obj
-      end
+  config.each do |lv1, lv1obj|
+    if lv1 == 'hosts'
+      ssh_config = find_cmd(lv1obj, remote)
     end
   end
 
-  if ssh_config == nil
-    print "'#{remote}' can not be found\n"
+  if !ssh_config
     return
   end
 
-  system "#{ssh_config['cmd']}"
+  system "#{terminal} -e \"#{ssh_config['cmd']}\" -t #{ssh_config['name']} --tab"
 end
 
 if ARGV.length < 1
