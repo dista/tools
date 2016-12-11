@@ -21,7 +21,7 @@ abort
 end
 
 def load_config
-  default_config_file = "#{Dir.home}/shuttle.json"
+  default_config_file = "#{Dir.home}/.shuttle.json"
 
   config = JSON.parse(File.read(default_config_file))
 end
