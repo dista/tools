@@ -11,7 +11,7 @@ Signal.trap("INT") {
 def print_usage
   print <<-eos
 Usage:
-sshgo COMMAND
+shuttle COMMAND
 COMMANDS:
   list              -- list all destiny, shortcut 'l'
   go DESTINY        -- go to the destiny, shortcut 'g'
