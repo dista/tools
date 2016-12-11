@@ -13,9 +13,10 @@ def print_usage
 Usage:
 sshgo COMMAND
 COMMANDS:
-  list        -- list all destiny, shortcut 'l'
-  go DESTINY  -- go to the destiny, shortcut 'g'
-  help        -- print this
+  list              -- list all destiny, shortcut 'l'
+  go DESTINY        -- go to the destiny, shortcut 'g'
+  detail DESTINY    -- show detail of destiny, shortcut 'd'
+  help              -- print this
 eos
 abort
 end
@@ -70,7 +71,7 @@ def find_cmd(lv1obj, remote)
   ret
 end
 
-def go_ssh(remote)
+def get_ssh_config(remote)
   config = load_config
 
   terminal = config['terminal']
@@ -82,6 +83,11 @@ def go_ssh(remote)
     end
   end
 
+  ssh_config
+end
+
+def go_ssh(remote)
+  ssh_config = get_ssh_config remote
   if !ssh_config
     return
   end
@@ -89,30 +95,51 @@ def go_ssh(remote)
   system "#{terminal} -e \"#{ssh_config['cmd']}\" -t #{ssh_config['name']} --tab"
 end
 
+def show_ssh(remote)
+  ssh_config = get_ssh_config remote
+  if !ssh_config
+    return
+  end
+
+  ssh_config.each do |k, v|
+    print "#{k}: #{v}\n"
+  end
+end
+
 if ARGV.length < 1
   print_usage
 end
 
+cmds = {'l' => 'list',
+        'g' => 'go',
+        'd' => 'detail',
+        'h' => 'help'
+       }
+
+allcmds = cmds.keys + cmds.values
+
 cmd = ARGV[0]
-  if not ['list', 'l', 'go', 'g', 'help'].include? cmd
+  if not allcmds.include? cmd
   print_usage
 end
 
-case cmd
-when 'l'
-  cmd = 'list'
-when 'g'
-  cmd = 'go'
+if cmds.key? cmd
+  cmd = cmds[cmd]
 end
 
 case cmd
 when 'list'
   list_config
-when 'go'
+when 'detail'
   if ARGV[1] == nil
     print_usage
   end
  
+  show_ssh(ARGV[1])
+when 'go'
+  if ARGV[1] == nil
+    print_usage
+  end
   go_ssh(ARGV[1])
 when 'help'
   print_usage
