@@ -36,7 +36,7 @@ set t_Co=256
 set nu!
 set background=light " for the dark version
 " set background=light " for the light version
-colorscheme one
+colorscheme github
 let g:airline_theme='one'
 let g:airline#extensions#tabline#enabled = 1
 
