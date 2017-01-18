@@ -7,9 +7,6 @@
   (package-initialize))
 
 (normal-erase-is-backspace-mode 1)
-(load-theme 'github t)
-;;(load-theme 'tangotango t)
-
 ;; backup file is annoy. so DISABLE it now
 (setq make-backup-files nil)
 (setq auto-save-default nil)
@@ -23,3 +20,17 @@
   tab-width 2
   standard-indent 2
   indent-tabs-mode nil)      ; makes sure tabs are not used.
+
+(global-linum-mode t) ;; line number
+
+(defun my-github ()
+  (interactive)
+  (load-theme 'github' t)
+  (set-face-attribute 'fringe nil :background "#eee")
+  ;;(setq linum-format "%4d ")
+  (set-face-attribute 'linum nil :background "#eee"))
+(my-github)
+;;(load-theme 'tangotango t)
+
+;; auto-complete
+(ac-config-default)
