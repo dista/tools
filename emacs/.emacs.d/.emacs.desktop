@@ -1,0 +1,129 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Tue Jan 17 16:02:32 2017
+;; Desktop file format version 206
+;; Emacs version 24.4.1
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (22653 53144 709352 557000) (desktop . "206") "dista@raspberrypi" nil nil ((((tty-type . "xterm-256color") (tty . "/dev/tty") (display-type . color) (background-mode . light) (foreground-color . "#000000") (cursor-color . "#a7a7a7") (background-color . "#f8f8ff") (mouse-color . "#bcd5fa") (font . "tty") (height . 53) (width . 270) (modeline . t) (unsplittable) (menu-bar-lines . 1) (frameset--id . "083E-8FC5-6F50-BD17") (frameset--mini t) (minibuffer . t)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 2) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 4) (min-pixel-width . 10) (min-pixel-height-ignore . 2) (min-pixel-width-ignore . 2) (min-pixel-height-safe . 1) (min-pixel-width-safe . 2)) leaf (pixel-width . 270) (pixel-height . 51) (total-width . 270) (total-height . 51) (normal-height . 1.0) (normal-width . 1.0) (buffer "gbt32960.go" (selected . t) (hscroll . 0) (fringes 0 0 nil) (margins nil) (scroll-bars 0 0 t nil) (vscroll . 0) (dedicated) (point . 2300) (start . 1577))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("go-mode" "php-mode" "php\\-mode" "php" "php-mode" "golang" "go"))
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq file-name-history '("/mnt/westwood/github/framework/composer.json" "/mnt/westwood/tmp/t.rb"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/home/dista/coding.net/autolink/golang/autolink/gbt32960.go"
+  "gbt32960.go"
+  'go-mode
+  nil
+  2300
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode . t) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/dista/.emacs"
+  ".emacs"
+  'emacs-lisp-mode
+  nil
+  304
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/mnt/westwood/tmp/t.rb"
+  "t.rb"
+  'ruby-mode
+  nil
+  64
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix) (fill-column . 0)))
+
+(desktop-create-buffer 206
+  "/home/dista/b.go"
+  "b.go"
+  'go-mode
+  nil
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode . t) (buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/home/dista/x.go"
+  "x.go"
+  'go-mode
+  nil
+  255
+  '(nil nil)
+  t
+  nil
+  '((indent-tabs-mode . t) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/mnt/westwood/github/framework/composer.json"
+  "composer.json"
+  'js-mode
+  nil
+  475
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/mnt/westwood/github/framework/src/Illuminate/Bus/BusServiceProvider.php"
+  "BusServiceProvider.php"
+  'php-mode
+  '(abbrev-mode)
+  252
+  '(nil nil)
+  nil
+  nil
+  '((show-trailing-whitespace) (tab-width . 4) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (case-fold-search . t)))
+
+(desktop-create-buffer 206
+  "/home/dista/cron_after_reboot.sh"
+  "cron_after_reboot.sh"
+  'sh-mode
+  nil
+  88
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/mnt/westwood/github/git/entry.c"
+  "entry.c"
+  'c-mode
+  '(abbrev-mode)
+  5717
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/mnt/westwood/github/git/copy.c"
+  "copy.c"
+  'c-mode
+  '(abbrev-mode)
+  1277
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
