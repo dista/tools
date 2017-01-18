@@ -12,6 +12,14 @@
 
 ;; backup file is annoy. so DISABLE it now
 (setq make-backup-files nil)
-(desktop-save-mode 1)
+(setq auto-save-default nil)
+;;(desktop-save-mode 1)
 
 ;; languages
+
+;; (require 'evil)
+;; (evil-mode 1)
+(setq-default 
+  tab-width 2
+  standard-indent 2
+  indent-tabs-mode nil)      ; makes sure tabs are not used.
