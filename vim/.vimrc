@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'rakr/vim-one'
+Plugin 'chazy/cscope_maps'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
