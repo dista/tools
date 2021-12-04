@@ -31,5 +31,4 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 
 vim config
 ------------
-* https://github.com/VundleVim/Vundle.vim
-* https://github.com/noah/vim256-color
+* https://github.com/junegunn/vim-plug

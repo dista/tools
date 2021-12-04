@@ -1,74 +1,24 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'rakr/vim-one'
-Plugin 'chazy/cscope_maps'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
-"
 
 syntax on
 set t_Co=256
 set nu!
-set background=light " for the dark version
-" set background=light " for the light version
-colorscheme github
-let g:airline_theme='one'
-let g:airline#extensions#tabline#enabled = 1
 
-set cursorline
-hi CursorLine   cterm=NONE ctermbg=LightYellow
 set laststatus=2
 set expandtab
 set tabstop=2
 set shiftwidth=2
 autocmd FileType make setlocal noexpandtab
+"autocmd FileType python set tabstop=4
+"autocmd FileType python set shiftwidth=4
 
-if has("autocmd")
-    " When editing a file, always jump to the last cursor position
-    autocmd BufReadPost *
-    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-    \   exe "normal g'\"" |
-    \ endif
-endi
+call plug#begin('~/.vim/plugged')
+" add plug here
+" example
+" Plug 'junegunn/vim-easy-align'
+" Reload .vimrc and :PlugInstall to install plugins.
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+call plug#end()
 
-set tags=tags;/
-
-function! LoadCscope()
-  let db = findfile("cscope.out", ".;")
-  if (!empty(db))
-    let path = strpart(db, 0, match(db, "/cscope.out$"))
-    set nocscopeverbose " suppress 'duplicate connection' error
-    exe "cs add " . db . " " . path
-    set cscopeverbose
-  " else add the database pointed to by environment variable
-  elseif $CSCOPE_DB != ""
-    cs add $CSCOPE_DB
-  endif
-endfunction
-au BufEnter /* call LoadCscope()
+let g:pymode_indent = 1
+let g:pymode_rope = 1
+" :PymodeLintAuto to run autopep8
