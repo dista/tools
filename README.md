@@ -14,20 +14,12 @@ systemctl disable firewalld
 BASIC
 -------------
 ```
-yum install git
-yum install vim
-yum install dstat
-yum install tmux
-yum install ctags
-yum install nano
+yum install git vim dstat tmux ctags nano
 ```
 
 zsh & oh-my-zsh
 -------------
-```
-yum install zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
+* https://github.com/ohmyzsh/ohmyzsh
 
 vim config
 ------------
