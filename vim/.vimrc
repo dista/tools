@@ -11,6 +11,8 @@ autocmd FileType make setlocal noexpandtab
 "autocmd FileType python set tabstop=4
 "autocmd FileType python set shiftwidth=4
 
+set tags=./tags;$HOME
+
 call plug#begin('~/.vim/plugged')
 " add plug here
 " example
